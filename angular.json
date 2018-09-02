@@ -125,6 +125,46 @@
           }
         }
       }
+    },
+    "generic-elements": {
+      "root": "projects/generic-elements",
+      "sourceRoot": "projects/generic-elements/src",
+      "projectType": "library",
+      "prefix": "generic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/generic-elements/tsconfig.lib.json",
+            "project": "projects/generic-elements/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/generic-elements/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/generic-elements/src/test.ts",
+            "tsConfig": "projects/generic-elements/tsconfig.spec.json",
+            "karmaConfig": "projects/generic-elements/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/generic-elements/tsconfig.lib.json",
+              "projects/generic-elements/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "AngularGenericLibrary"

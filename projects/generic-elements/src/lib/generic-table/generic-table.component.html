@@ -1,0 +1,15 @@
+<div class="table-wrapper">
+  <table mat-table [dataSource]="entitySource" matSort multiTemplateDataRows>
+
+    <div *ngFor="let column of tableColumns">
+      <p>{{ column }}</p>
+      <ng-container matColumnDef="{{column}}">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ cammelCaseToTitleCase(column) }} </th>
+        <td mat-cell *matCellDef="let entity"> {{entity[column]}} </td>
+      </ng-container>
+    </div>
+    <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+    <tr mat-row *matRowDef="let entity; columns: tableColumns;">
+    </tr>
+  </table>
+</div>
